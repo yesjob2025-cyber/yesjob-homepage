@@ -3,7 +3,8 @@ import { company } from "@/content/company";
 import { businessAreas } from "@/content/businesses";
 import { history } from "@/content/history";
 import { organization } from "@/content/organization";
-import { programs } from "@/content/programs";
+import { programAreas } from "@/content/programs";
+import projects from "@/content/projects.json";
 import { getLatestWeeklyIssue } from "@/lib/weekly";
 import { SECTIONS } from "@/lib/sections";
 import { WeeklyList } from "@/components/weekly-list";
@@ -11,17 +12,6 @@ import { Stone } from "@/components/stone";
 import { SoftIcon } from "@/components/soft-icon";
 
 const nn = (i: number) => String(i + 1).padStart(2, "0");
-
-/** "참여기업 00개 · 방문 0,000명" → 숫자 부분만 굵게 */
-function Emph({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(/([\d,.]+[^\s·/]*|0+[^\s·/]*)/).map((part, i) =>
-        /\d/.test(part) ? <b key={i} className="font-bold">{part}</b> : <span key={i}>{part}</span>,
-      )}
-    </>
-  );
-}
 
 function SectionHead({ en, title, children }: { en: string; title: string; children?: React.ReactNode }) {
   return (
@@ -108,17 +98,39 @@ export default function HomePage() {
             <div className="max-w-2xl space-y-3 font-kr text-lg leading-relaxed text-ink-soft">
               {company.about.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
             </div>
-            <ul className="mt-10 grid gap-5 md:grid-cols-3">
-              {company.about.values.map((v) => (
-                <li key={v.title} className="outline-card flex flex-col items-center px-7 pb-9 pt-10 text-center font-kr">
+            <p className="mt-12 font-kr text-sm font-medium text-ink-muted">예스잡의 장점 ① 사람 그리고 기업</p>
+            <ul className="mt-4 grid gap-5 md:grid-cols-3">
+              {company.about.strengths.map((v) => (
+                <li key={v.title} className="outline-card flex flex-col items-center px-7 pb-9 pt-10 font-kr">
                   <SoftIcon name={v.icon} />
                   <span className="pill mt-6 px-6 py-2 text-xl font-normal">{v.title}</span>
-                  <p className="mt-5 text-left text-[15px] leading-relaxed text-ink-muted">{v.desc}</p>
+                  <ul className="mt-6 w-full space-y-2 text-[15px] leading-relaxed text-ink-muted">
+                    {v.points.map((pt) => (
+                      <li key={pt} className="flex gap-2"><span className="mt-[0.65em] h-1 w-1 shrink-0 rounded-full bg-ink-muted" />{pt}</li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+        {/* 예스잡의 장점 ② Total JOB & EDU */}
+        <div className="container-page mt-20">
+          <p className="font-kr text-sm font-medium text-ink-muted lg:ml-[26%]">예스잡의 장점 ② Total JOB &amp; EDU</p>
+        </div>
+        <ol className="mt-4 border-t border-ink-line font-kr">
+          {company.about.total.map((t, i) => (
+            <li key={t.title} className="border-b border-ink-line">
+              <div className="container-page grid gap-4 py-8 lg:grid-cols-[26%_1fr_1fr]">
+                <span className="font-sans text-2xl">{nn(i)}</span>
+                <span className="text-2xl font-light sm:text-3xl">{t.title}</span>
+                <ul className="space-y-1.5 text-ink-soft">
+                  {t.points.map((pt) => <li key={pt}>· {pt}</li>)}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* ───────── SELECTED WORKS (시안 4p) ───────── */}
@@ -131,8 +143,9 @@ export default function HomePage() {
               <span className="rule-line text-4xl font-light tracking-tight sm:text-5xl">대표 성과</span>
             </div>
             <p className="max-w-sm leading-relaxed text-ink-soft">
-              채용박람회부터 멘토링, 교육, 창업까지. 예스잡이 기획하고 운영해 온 사업 가운데 영역별 대표 사례 4개씩을 소개합니다.
+              2025년 10월 이후 대학·공공기관·기업과 함께 {projects.length}건의 사업을 수행·예정하고 있습니다. 영역별 대표 사례 4개씩을 소개합니다.
             </p>
+            <Link href="/works" className="pill w-fit border-ink hover:bg-ink hover:text-lemon">전체 사업실적 {projects.length}건 보기 →</Link>
           </div>
           <div className="relative hidden h-full flex-col items-center justify-center lg:flex" aria-hidden>
             {[1, 3, 2, 0].map((v, i) => (
@@ -182,15 +195,20 @@ export default function HomePage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
                       </>
                     )}
-                    {!w.image && dark && <Stone variant={i + ai} rotate={-12} className="absolute -right-10 -top-6 w-1/2 opacity-70" />}
+                    {!w.image && dark && <Stone variant={i + ai} rotate={-12} className="absolute -right-12 -top-10 w-[38%] opacity-50" />}
                     <div className={`relative ${w.image ? "text-white" : ""}`}>
-                      <p className={`text-sm ${dark || w.image ? "text-white/60" : "text-ink-muted"}`}>{w.year} · {w.client}</p>
-                      <p className="mt-2 text-xl font-medium sm:text-2xl">{w.title}</p>
-                      <p className={`mt-2 max-w-md text-[15px] ${dark || w.image ? "text-white/70" : "text-ink-muted"}`}>{w.summary}</p>
+                      <p className={`text-sm ${dark || w.image ? "text-white/60" : "text-ink-muted"}`}>{w.date}</p>
+                      <p className="mt-2 max-w-lg text-xl font-medium leading-snug sm:text-2xl">{w.title}</p>
+                      <p className={`mt-2 max-w-md text-[15px] ${dark || w.image ? "text-white/70" : "text-ink-muted"}`}>{w.client}</p>
                     </div>
-                    <p className={`relative mt-auto pt-10 text-3xl font-extralight tracking-tight sm:text-[2.6rem] ${w.image ? "text-white" : ""}`}>
-                      <Emph text={w.result} />
-                    </p>
+                    <div className="relative mt-auto pt-10">
+                      {w.highlight ? (
+                        <p className={`text-3xl font-light tracking-tight sm:text-4xl ${w.image ? "text-white" : ""}`}>{w.highlight}</p>
+                      ) : null}
+                      {w.place && (
+                        <p className={`mt-2 text-sm ${dark || w.image ? "text-white/60" : "text-ink-muted"}`}>📍 {w.place}</p>
+                      )}
+                    </div>
                   </li>
                 );
               })}
@@ -210,9 +228,9 @@ export default function HomePage() {
             <li key={h.year} className="border-b border-ink-line">
               <div className="container-page grid gap-3 py-8 md:grid-cols-2">
                 <span className="text-5xl font-extralight tracking-tight sm:text-6xl">{h.year}</span>
-                <ul className="space-y-2 font-kr text-lg text-ink-soft md:pt-3">
-                  {h.items.map((it) => (
-                    <li key={it} className="flex gap-3"><span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-ink" />{it}</li>
+                <ul className="space-y-2.5 font-kr text-lg text-ink-soft md:pt-3">
+                  {h.items.map((it, j) => (
+                    <li key={j} className="grid grid-cols-[2.5rem_1fr] gap-2"><span className="font-sans text-ink-muted">{it.month}</span>{it.text}</li>
                   ))}
                 </ul>
               </div>
@@ -225,34 +243,47 @@ export default function HomePage() {
       <section id="organization" className="section">
         <div className="container-page">
           <SectionHead en="our teams" title="조직도" />
-          <div className="mt-16 flex flex-col items-center font-kr">
-            <div className="rounded-full bg-ink px-10 py-4 text-center text-xl text-lemon">
-              {organization.head.title}
-              {organization.head.name && <span className="ml-2 text-base text-white/70">{organization.head.name}</span>}
+          <div className="mt-14 grid gap-10 font-kr lg:grid-cols-[300px_1fr]">
+            {/* 대표 소개 */}
+            <div className="outline-card flex flex-col justify-between gap-8 bg-paper-light p-8">
+              <div>
+                <p className="text-sm text-ink-muted">CEO</p>
+                <p className="mt-1 text-3xl font-light">{organization.ceo.name} <span className="text-lg text-ink-muted">{organization.ceo.title}</span></p>
+              </div>
+              <ul className="space-y-1.5 text-[15px] text-ink-soft">
+                {organization.ceo.career.map((c) => <li key={c}>{c}</li>)}
+              </ul>
             </div>
-            <div className="relative h-16 w-px bg-ink">
-              <div className="absolute left-0 top-1/2 flex -translate-y-1/2 items-center">
-                <div className="h-px w-8 bg-ink sm:w-16" />
-                <div className="whitespace-nowrap rounded-full border border-dashed border-ink-muted bg-paper px-5 py-2 text-sm">
-                  {organization.advisory.title}
-                  <span className="ml-2 hidden text-ink-muted sm:inline">{organization.advisory.desc}</span>
+            {/* 조직 트리 */}
+            <div className="flex flex-col items-center">
+              <div className="rounded-full bg-ink px-10 py-4 text-xl text-lemon">대표이사</div>
+              <div className="relative h-14 w-px bg-ink">
+                <div className="absolute left-0 top-1/2 flex -translate-y-1/2 items-center">
+                  <div className="h-px w-8 bg-ink sm:w-14" />
+                  <div className="whitespace-nowrap rounded-full bg-lemon px-5 py-2 text-sm font-medium">{organization.support}</div>
                 </div>
               </div>
-            </div>
-            <div className="hidden h-px w-[75%] bg-ink lg:block" />
-            <ul className="grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {organization.departments.map((d) => (
-                <li key={d.name} className="flex flex-col items-center">
-                  <div className="hidden h-8 w-px bg-ink lg:block" />
-                  <div className="outline-card w-full px-6 pb-8 pt-8 text-center">
-                    <span className="pill px-6 py-2 text-lg font-normal">{d.name}</span>
-                    <ul className="mt-5 space-y-1.5 text-ink-muted">
-                      {d.roles.map((r) => <li key={r}>{r}</li>)}
+              <div className="hidden h-px w-1/2 bg-ink md:block" />
+              <div className="grid w-full gap-8 md:grid-cols-2">
+                {organization.divisions.map((d) => (
+                  <div key={d.name} className="flex flex-col items-center">
+                    <div className="hidden h-6 w-px bg-ink md:block" />
+                    <div className="pill border-ink px-8 py-2.5 text-lg font-medium">{d.name}</div>
+                    <div className="h-6 w-px bg-ink" />
+                    <ul className="grid w-full gap-3 border-t border-ink pt-4 sm:grid-cols-3">
+                      {d.teams.map((t) => (
+                        <li key={t.name} className="outline-card px-4 pb-6 pt-5 text-center">
+                          <p className="font-medium">{t.name}</p>
+                          <ul className="mt-3 space-y-1 text-sm text-ink-muted">
+                            {t.roles.map((r) => <li key={r}>{r}</li>)}
+                          </ul>
+                        </li>
+                      ))}
                     </ul>
                   </div>
-                </li>
-              ))}
-            </ul>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -260,22 +291,41 @@ export default function HomePage() {
       {/* ───────── PROGRAMS ───────── */}
       <section id="programs" className="section bg-paper-light">
         <div className="container-page">
-          <SectionHead en="programs" title="주요 프로그램" />
+          <SectionHead en="programs" title="주요 프로그램">
+            <p className="max-w-md font-kr text-ink-muted">성장하는 커리어, 도전하는 비즈니스, 함께하는 이벤트. 6개 영역의 프로그램을 기관 맞춤형으로 설계·운영합니다.</p>
+          </SectionHead>
         </div>
         <ol className="mt-14 border-t border-ink-line font-kr">
-          {programs.map((p, i) => (
-            <li key={p.name} className="border-b border-ink-line transition hover:bg-lemon/40">
-              <div className="container-page grid items-baseline gap-3 py-7 md:grid-cols-[4rem_1fr_1fr]">
-                <span className="font-sans text-2xl">{nn(i)}</span>
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-2xl font-light sm:text-3xl">{p.name}</span>
-                  <span className="pill py-1 text-sm">{p.target}</span>
+          {programAreas.map((a, i) => (
+            <li key={a.name} className="border-b border-ink-line">
+              <details className="group">
+                <summary className="container-page grid cursor-pointer list-none items-baseline gap-3 py-8 transition hover:bg-lemon/40 md:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.3fr)_2rem] [&::-webkit-details-marker]:hidden">
+                  <span className="font-sans text-2xl">{nn(i)}</span>
+                  <span>
+                    <span className="text-3xl font-light sm:text-4xl">{a.name}</span>
+                    <span className="ml-3 font-sans text-base text-ink-muted">{a.en}</span>
+                  </span>
+                  <span>
+                    <span className="block text-lg text-ink-soft">{a.tagline}</span>
+                    <span className="mt-3 flex flex-wrap gap-1.5">
+                      {a.summary.map((t) => <span key={t} className="pill py-1 text-sm">{t}</span>)}
+                    </span>
+                  </span>
+                  <span className="hidden text-2xl transition group-open:rotate-45 md:block">+</span>
+                </summary>
+                <div className="container-page pb-10">
+                  <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 md:ml-16">
+                    {a.programs.map((p) => (
+                      <li key={p.name} className="outline-card bg-paper p-6">
+                        <p className="text-lg font-medium">{p.name}</p>
+                        <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-ink-muted">
+                          {p.points.map((pt) => <li key={pt}>· {pt}</li>)}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div>
-                  <p className="leading-relaxed text-ink-soft">{p.desc}</p>
-                  <p className="mt-2 text-sm text-ink-muted">{p.tags.map((t) => `#${t}`).join("  ")}</p>
-                </div>
-              </div>
+              </details>
             </li>
           ))}
         </ol>

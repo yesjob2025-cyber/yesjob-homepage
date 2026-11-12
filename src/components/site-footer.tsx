@@ -30,12 +30,13 @@ export function SiteFooter() {
               </a>
             </div>
           </div>
-          <dl className="grid grid-cols-[4.5rem_1fr] gap-y-2 text-sm text-ink-soft">
+          <dl className="grid grid-cols-[5.5rem_1fr] gap-y-2 text-sm text-ink-soft">
             <dt className="text-ink-muted">상호</dt><dd>{company.name}</dd>
             <dt className="text-ink-muted">대표</dt><dd>{company.ceo}</dd>
-            <dt className="text-ink-muted">주소</dt><dd>{company.address}</dd>
+            <dt className="text-ink-muted">본사</dt><dd>{company.address}</dd>
+            <dt className="text-ink-muted">지사</dt><dd>{company.branch.replace("서울지사 · ", "서울 ")}</dd>
             <dt className="text-ink-muted">이메일</dt><dd>{company.email}</dd>
-            <dt className="text-ink-muted">사업자</dt><dd>{company.bizNo}</dd>
+            <dt className="text-ink-muted">사업자번호</dt><dd>{company.bizNo}</dd>
           </dl>
         </div>
       </div>

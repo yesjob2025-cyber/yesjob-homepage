@@ -1,72 +1,74 @@
 /**
- * 주요 사업영역 + 영역별 대표 성과 4개씩
- * ⚠️ 예시 데이터입니다. 영역 이름과 사업 내용을 실제로 바꿔 주세요.
- *  - image: public/ 폴더에 사진을 넣고 "/works/파일명.jpg" 처럼 적으면 표시됩니다. (없으면 색상 카드)
+ * 사업영역별 대표 성과 4개씩 (출처: 사업현황 엑셀)
+ *  - highlight: 카드 하단에 크게 보이는 자랑 포인트 (없으면 장소 표시)
+ *  - image: public/works/ 에 사진을 넣고 "/works/파일명.jpg" 로 지정
+ * 전체 목록은 projects.json → /works 페이지에 자동 표시됩니다.
  */
 export type Work = {
   title: string;
-  client: string; // 발주처·협력기관
-  year: string;
-  summary: string;
-  result: string; // 성과 한 줄 (자랑 포인트)
+  client: string;
+  date: string;
+  place?: string;
+  highlight?: string;
   image?: string;
 };
 
-export type BusinessArea = {
-  id: string;
-  name: string;
-  tagline: string;
-  icon: string;
-  works: Work[];
-};
+export type BusinessArea = { id: string; name: string; tagline: string; works: Work[] };
 
 export const businessAreas: BusinessArea[] = [
   {
-    id: "jobfair",
-    name: "채용박람회 · 잡페스티벌",
-    tagline: "기업과 청년이 직접 만나는 현장",
-    icon: "🎪",
+    id: "job",
+    name: "직무 · 현직자 멘토링",
+    tagline: "기업·현직자와 함께하는 직무체험 캠프와 연합 멘토링. 예스잡이 가장 많이 운영한 분야입니다.",
     works: [
-      { title: "OO대학교 잡페스티벌", client: "OO대학교", year: "2026", summary: "기업 부스·현장면접·직무특강 통합 운영", result: "참여기업 00개 · 방문 0,000명" },
-      { title: "부울경 연합 채용박람회", client: "OO시", year: "2025", summary: "지역 강소기업 중심 채용박람회 기획·운영", result: "현장채용 00명" },
-      { title: "온라인 채용설명회", client: "OO기관", year: "2025", summary: "비대면 기업설명회 및 Q&A 라이브", result: "누적 시청 0,000회" },
-      { title: "공공기관 채용설명회", client: "OO공사", year: "2024", summary: "공공기관 직무·전형 안내 설명회", result: "만족도 4.8 / 5.0" },
+      { title: "부산교통공사와 함께하는 휴메트로 직무체험 멘토링캠프", client: "부울경 대학 연합", date: "2025.12 · 2026.05 · 2026.10", place: "철도인재기술원(양산)", highlight: "3회 연속 · 9개 대학 연합" },
+      { title: "지역정주형 부울경 연합 현직자 온라인 멘토링", client: "부울경 대학 연합", date: "2026.07", place: "온라인", highlight: "현직자 멘토 566명" },
+      { title: "KAI와 함께하는 부울경연합 직무체험 멘토링 캠프", client: "부산대 · 국립부경대 · 한국해양대 · 경상국립대 · 동아대", date: "2026.06", place: "KB손해보험 인재니움 사천연수원", highlight: "5개 대학 연합" },
+      { title: "대학연합 현직자 직무 토크콘서트", client: "경성대 · 동명대 · 동서대 · 동아대 · 동의대 · 신라대", date: "2026.06 · 2026.10", place: "서면 상상마당 · 아바니센트럴부산", highlight: "상·하반기 · 6개 대학 연합" },
     ],
   },
   {
-    id: "mentoring",
-    name: "현직자 멘토링 · 진로",
-    tagline: "먼저 간 선배가 길을 알려줍니다",
-    icon: "🤝",
+    id: "employment",
+    name: "취업 · 채용 연계",
+    tagline: "박람회와 캠프, 기업설명회로 교육을 실제 채용까지 연결합니다.",
     works: [
-      { title: "부울경 연합 현직자 온라인 멘토링", client: "부울경 7개 대학", year: "2026", summary: "실시간 Q&A + 릴레이 토크콘서트 45회", result: "멘토 566명 · 질문 0,000건" },
-      { title: "직무 토크콘서트", client: "OO대학교", year: "2025", summary: "산업·직무별 현직자 토크콘서트", result: "참여 학생 000명" },
-      { title: "1:1 진로 컨설팅", client: "OO대학교", year: "2025", summary: "저학년 대상 진로설계 개별 컨설팅", result: "000명 컨설팅" },
-      { title: "선배 멘토링 캠프", client: "OO기관", year: "2024", summary: "1박 2일 직무 멘토링 캠프", result: "재참여 희망 00%" },
+      { title: "2026 국립한국해양대학교(KMOU) 취업박람회", client: "국립한국해양대학교 학생성장지원실", date: "2026.09", place: "도서관 신관 1층 · 실외 필로티" },
+      { title: "2026 찾아가는 청끌기업 설명회", client: "부산경제진흥원 청년두드림센터", date: "2026.05~", highlight: "총 10회 진행" },
+      { title: "2026 한달빛 연합 취업캠프", client: "대전보건대 · 광주보건대 · 대구보건대", date: "2026.06", place: "진주 라한호텔", highlight: "3개 보건대 연합" },
+      { title: "생성형 AI 취업역량 UP 연합 경진대회", client: "부울경 전문대학 연합", date: "2026.07", place: "한화리조트(경주)" },
     ],
   },
   {
-    id: "education",
-    name: "취업 교육 · 캠프",
-    tagline: "서류부터 면접까지 실전 대비",
-    icon: "📚",
+    id: "event",
+    name: "행사 · 페스티벌",
+    tagline: "디자인과 시설 레이아웃부터 현장 진행까지, 종합 행사 대행.",
     works: [
-      { title: "AI 면접 대비 특강", client: "OO대학교", year: "2026", summary: "AI 역량검사·면접 실전 트레이닝", result: "수강생 000명" },
-      { title: "자소서 클리닉", client: "OO대학교", year: "2025", summary: "현직 인사담당자 1:1 첨삭", result: "첨삭 000건" },
-      { title: "공기업 NCS 집중캠프", client: "OO기관", year: "2025", summary: "NCS 필기·면접 집중 과정", result: "최종합격 00명" },
-      { title: "직무 역량 부트캠프", client: "OO시", year: "2024", summary: "산업별 직무 실습 중심 교육", result: "수료율 00%" },
+      { title: "BICAF 부산국제캐릭터&애니메이션페스티벌", client: "동서대학교 · 부산경상대학교", date: "2025.10 · 2026.10", place: "부산역 광장", highlight: "2년 연속 · 부산역 광장" },
+      { title: "캡스톤 디자인 경진대회", client: "대전보건대학교 현장실습지원센터", date: "2025.11 · 2026.10", highlight: "2년 연속 운영" },
+      { title: "2025 동아대학교 진로직업박람회", client: "동아대학교 진로개발센터", date: "2025.11", highlight: "승학·부민 2개 캠퍼스" },
+      { title: "2025 국립부경대학교 창업 경진대회", client: "국립부경대학교 RISE사업단", date: "2025.12", place: "아쿠아팰리스호텔" },
     ],
   },
   {
-    id: "startup",
-    name: "창업 지원",
-    tagline: "아이디어를 사업으로",
-    icon: "🚀",
+    id: "career",
+    name: "진로 · 전공 탐색",
+    tagline: "고교생부터 재학생까지, 전공과 진로를 스스로 설계하도록.",
     works: [
-      { title: "청년 창업 아이디어 경진대회", client: "OO대학교", year: "2026", summary: "예선·본선·데모데이 운영", result: "참가팀 00팀" },
-      { title: "예비창업자 교육", client: "OO센터", year: "2025", summary: "비즈니스모델·사업계획서 교육", result: "정부지원사업 선정 00팀" },
-      { title: "창업 멘토링 매칭", client: "OO기관", year: "2025", summary: "선배 창업가 1:1 멘토링", result: "매칭 00건" },
-      { title: "로컬 창업 투어", client: "OO시", year: "2024", summary: "지역 창업 공간·기업 탐방", result: "참여 000명" },
+      { title: "2026 PKNU 진로취창업 박람회", client: "국립부경대학교 학생성공지원과", date: "2026.05", place: "부경컨벤션홀 · 장보고관" },
+      { title: "2026 DSU 학생성공비전페어", client: "동서대학교 대학일자리플러스센터", date: "2026.04", place: "뉴밀레니엄관 · U-IT관" },
+      { title: "2025 국립부경대학교 전공박람회", client: "국립부경대학교 자유전공길라잡이센터", date: "2025.11", place: "부경 컨벤션홀" },
+      { title: "고교생을 위한 나의 전공 찾기", client: "국립부경대학교 입학관리과", date: "2026.01", place: "부경 컨벤션홀" },
+    ],
+  },
+  {
+    id: "staff",
+    name: "교직원 · 기관 역량강화",
+    tagline: "청년을 지원하는 사람들의 역량까지 함께 키웁니다.",
+    works: [
+      { title: "진로취업지도 역량강화 캠프", client: "대전보건대학교 취업지원센터", date: "2026.01", place: "전주 라한호텔" },
+      { title: "글로컬대학30 HIT 글로컬러닝센터 공유·확산", client: "대전보건대학교 HIT 글로컬러닝센터", date: "2026.01" },
+      { title: "청년일자리 강소기업 인사담당자 역량강화 교육", client: "(사)벤처기업협회", date: "2026.05", place: "드리움(역삼동)" },
+      { title: "새울 팀 투게더 게이미피케이션", client: "한국수력원자력 새울본부", date: "2026.06", place: "사내 강의장" },
     ],
   },
 ];

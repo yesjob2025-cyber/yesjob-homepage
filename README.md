@@ -30,10 +30,12 @@ npm run build
 | 사업영역·성과(4개씩) | `src/content/businesses.ts` (사진은 `public/works/`에 넣고 `image: "/works/파일.jpg"`) |
 | 연혁 | `src/content/history.ts` |
 | 조직도 | `src/content/organization.ts` |
-| 주요 프로그램 | `src/content/programs.ts` |
+| 주요 프로그램 (6개 영역) | `src/content/programs.ts` |
 | 주간 정보 | `src/content/weekly/YYYY-MM-DD.json` (월요일 날짜) |
 
-> 현재 들어간 문구·수치는 **예시**입니다(OO, 000 표시). 실제 내용으로 교체해 주세요.
+| 전체 사업실적 (`/works`) | `src/content/projects.json` (사업현황 엑셀에서 변환) |
+
+> 회사 정보는 사업자등록증·회사소개서, 사업실적은 사업현황 엑셀 기준입니다.
 
 ## 주간 정보 업데이트
 ```bash
