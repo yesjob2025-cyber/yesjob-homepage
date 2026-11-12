@@ -15,7 +15,7 @@ export const businessAreas: BusinessArea[] = [
       { title: "국립한국해양대학교(KMOU) 취업박람회", client: "국립한국해양대학교 학생성장지원실", date: "2026.09", place: "도서관 신관 · 실외 필로티" },
       { title: "찾아가는 청끌기업 설명회", client: "부산경제진흥원 청년두드림센터", date: "2026.05~", highlight: "총 10회 진행" },
       { title: "한달빛 연합 취업캠프", client: "대전보건대 · 광주보건대 · 대구보건대", date: "2026.06", place: "진주 라한호텔", highlight: "3개 보건대 연합" },
-      { title: "KMOU 면접 마스터 · 면접완전정복 캠프", client: "국립한국해양대학교 학생성장지원실", date: "2025.11 · 2026.09", highlight: "2년 연속 운영" },
+      { title: "경동대학교 Fun Fun Job Festival", client: "경동대학교 취업사관교육센터", date: "2026.10", place: "우당관 1층 도서관 · 로비", image: "/works/job-fair.jpg" },
     ],
   },
   {
@@ -35,8 +35,8 @@ export const businessAreas: BusinessArea[] = [
     tagline: "생각을 넘어 리얼리티 창업, 기업가 정신이 실현되는 과정.",
     works: [
       { title: "국립부경대학교 창업 경진대회", client: "국립부경대학교 RISE사업단", date: "2025.12", place: "아쿠아팰리스호텔" },
-      { title: "학생 창업유망팀 육성 · 창업동아리 지원", client: "부울경 대학 창업동아리", highlight: "창업유망팀 300+" },
-      { title: "창업 리얼리티 캠퍼스", client: "대학 창업지원 부서", highlight: "시제품 제작 · 팝업스토어" },
+      { title: "학생 창업유망팀 육성 · 창업동아리 지원", client: "국립부경대학교", highlight: "창업유망팀 300+" },
+      { title: "창업 리얼리티 캠퍼스", client: "동의대학교", highlight: "시제품 제작 · 팝업스토어" },
     ],
   },
   {
@@ -46,7 +46,7 @@ export const businessAreas: BusinessArea[] = [
     works: [
       { title: "BICAF 부산국제캐릭터&애니메이션페스티벌", client: "동서대학교 · 부산경상대학교", date: "2025.10 · 2026.10", place: "부산역 광장", highlight: "2년 연속 · 부산역 광장" },
       { title: "캡스톤 디자인 경진대회", client: "대전보건대학교 현장실습지원센터", date: "2025.11 · 2026.10", highlight: "2년 연속 운영" },
-      { title: "동아대학교 진로직업박람회", client: "동아대학교 진로개발센터", date: "2025.11", highlight: "승학·부민 2개 캠퍼스", image: "/works/job-fair.jpg" },
+      { title: "동아대학교 진로직업박람회", client: "동아대학교 진로개발센터", date: "2025.11", highlight: "승학·부민 2개 캠퍼스" },
       { title: "제4회 지산관학 성과포럼", client: "경복대학교 혁신지원사업단", date: "2025.11", place: "교내 실내체육관" },
     ],
   },

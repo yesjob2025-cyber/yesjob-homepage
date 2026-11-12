@@ -28,11 +28,14 @@ export const history: { year: string; items: { month: string; text: string }[] }
     items: [{ month: "~", text: "부울경 온라인 직무박람회 운영 (현재까지)" }],
   },
   {
+    year: "2015",
+    items: [{ month: "~", text: "청년희망재단 열린채용 사업 운영 (현재까지)" }],
+  },
+  {
     year: "2013",
     items: [
       { month: "~", text: "고용노동부 기업탐방 사업 운영 (현재까지)" },
       { month: "~", text: "채용박람회 운영 (현재까지)" },
-      { month: "", text: "청년희망재단 열린채용 사업 운영" },
     ],
   },
 ];

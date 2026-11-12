@@ -293,9 +293,7 @@ export default function HomePage() {
           <SectionHead en="our teams" title="조직도" />
           <div className="mt-14 grid gap-10 font-kr lg:grid-cols-[300px_1fr]">
             {/* 대표 소개 */}
-            <div className="outline-card flex flex-col gap-6 overflow-hidden bg-paper-light p-8">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={organization.ceo.photo} alt={`${organization.ceo.name} 대표이사`} className="aspect-[4/3.6] w-full rounded-2xl object-cover object-top" />
+            <div className="outline-card flex flex-col justify-between gap-8 bg-paper-light p-8">
               <div>
                 <p className="text-sm text-ink-muted">CEO</p>
                 <p className="mt-1 text-3xl font-light">{organization.ceo.name} <span className="text-lg text-ink-muted">{organization.ceo.title}</span></p>

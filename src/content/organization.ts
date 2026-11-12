@@ -3,13 +3,10 @@ export const organization = {
   ceo: {
     name: "홍석진",
     title: "대표이사",
-    photo: "/team/ceo.jpg",
     career: [
       "현) 주식회사 예스잡 대표이사",
       "전) 스탭스 대학사업팀 영업총괄 부장",
       "전) 제이앤비솔루션 영업이사",
-      "전) 박문각 마케팅 총괄",
-      "전) 청년희망재단 파트너사",
     ],
   },
   support: "경영지원",
