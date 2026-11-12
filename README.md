@@ -27,7 +27,8 @@ npm run build
 | 섹션 | 파일 |
 |------|------|
 | 회사 정보·소개·수치 | `src/content/company.ts` |
-| 사업영역·성과(4개씩) | `src/content/businesses.ts` (사진은 `public/works/`에 넣고 `image: "/works/파일.jpg"`) |
+| 대표 사업 4선 | `src/content/featured.ts` |
+| 6개 영역별 실적 | `src/content/businesses.ts` (사진은 `public/works/`에 넣고 `image: "/works/파일.jpg"`) |
 | 연혁 | `src/content/history.ts` |
 | 조직도 | `src/content/organization.ts` |
 | 주요 프로그램 (6개 영역) | `src/content/programs.ts` |

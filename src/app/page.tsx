@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { company } from "@/content/company";
 import { businessAreas } from "@/content/businesses";
+import { featured } from "@/content/featured";
 import { history } from "@/content/history";
 import { organization } from "@/content/organization";
 import { programAreas } from "@/content/programs";
@@ -143,7 +144,7 @@ export default function HomePage() {
               <span className="rule-line text-4xl font-light tracking-tight sm:text-5xl">대표 성과</span>
             </div>
             <p className="max-w-sm leading-relaxed text-ink-soft">
-              2025년 10월 이후 대학·공공기관·기업과 함께 {projects.length}건의 사업을 수행·예정하고 있습니다. 영역별 대표 사례 4개씩을 소개합니다.
+              2025년 10월 이후 대학·공공기관·기업과 함께 {projects.length}건의 사업을 수행·예정하고 있습니다. 대표 사업과 6개 영역별 주요 실적을 소개합니다.
             </p>
             <Link href="/works" className="pill w-fit border-ink hover:bg-ink hover:text-lemon">전체 사업실적 {projects.length}건 보기 →</Link>
           </div>
@@ -165,6 +166,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ───────── 대표 사업 4선 ───────── */}
+      <section className="py-20 sm:py-24">
+        <div className="container-page">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <h3 className="rule-line w-fit font-kr text-4xl font-light tracking-tight sm:text-5xl">대표 사업</h3>
+            <p className="font-kr text-lg leading-relaxed text-ink-soft lg:pt-2">기업·대학과 함께 해마다 이어 가는, 숫자로 증명된 예스잡의 대표 사업입니다.</p>
+          </div>
+          <ul className="mt-12 grid gap-5 font-kr md:grid-cols-12">
+            {featured.map((f, i) => {
+              const span = [7, 5, 5, 7][i % 4];
+              const dark = !f.image && i % 2 === 1;
+              return (
+                <li
+                  key={f.title}
+                  className={`group relative flex min-h-[380px] flex-col overflow-hidden rounded-[28px] p-7 sm:p-9 ${span === 7 ? "md:col-span-7" : "md:col-span-5"} ${
+                    f.image || dark ? "bg-ink text-white" : "border border-ink-line bg-lemon"
+                  }`}
+                >
+                  {f.image && (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={f.image} alt={f.title} className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 group-hover:scale-[1.03] group-hover:grayscale-0" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+                    </>
+                  )}
+                  {dark && <Stone variant={i} rotate={-12} className="absolute -right-12 -top-10 w-[38%] opacity-50" />}
+                  <div className="relative">
+                    <p className={`text-sm ${f.image || dark ? "text-white/70" : "text-ink-soft"}`}>{nn(i)} · {f.partners}</p>
+                    <p className="mt-2 text-2xl font-medium sm:text-3xl">{f.title}</p>
+                    <p className={`mt-2 max-w-md text-[15px] leading-relaxed ${f.image || dark ? "text-white/75" : "text-ink-soft"}`}>{f.desc}</p>
+                  </div>
+                  <dl className="relative mt-auto flex flex-wrap gap-x-8 gap-y-3 pt-10">
+                    {f.stats.map((st) => (
+                      <div key={st.label}>
+                        <dd className="text-4xl font-extralight tracking-tight sm:text-5xl">{st.value}</dd>
+                        <dt className={`mt-1 text-sm ${f.image || dark ? "text-white/70" : "text-ink-soft"}`}>{st.label}</dt>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
       {/* ───────── 영역별 4개 (시안 5·6p 'Project 0N') ───────── */}
       {businessAreas.map((area, ai) => (
         <section key={area.id} id={`area-${area.id}`} className="py-20 sm:py-24">
@@ -179,25 +226,26 @@ export default function HomePage() {
 
             <ul className="mt-12 grid gap-5 font-kr md:grid-cols-12">
               {area.works.slice(0, 4).map((w, i) => {
+                const n = Math.min(area.works.length, 4);
                 const dark = i === 0 || i === 3;
-                const span = [7, 5, 5, 7][i];
+                const span = (n === 4 ? [7, 5, 5, 7] : n === 3 ? [7, 5, 12] : [6, 6, 6])[i];
                 return (
                   <li
                     key={w.title}
                     className={`relative flex min-h-[300px] flex-col overflow-hidden rounded-[28px] p-7 sm:p-9 ${
-                      span === 7 ? "md:col-span-7" : "md:col-span-5"
-                    } ${dark ? "bg-ink text-white" : "border border-ink-line bg-paper-light"}`}
+                      { 5: "md:col-span-5", 6: "md:col-span-6", 7: "md:col-span-7", 12: "md:col-span-12" }[span]
+                    } ${dark || w.image ? "bg-ink text-white" : "border border-ink-line bg-paper-light"} group`}
                   >
                     {w.image && (
                       <>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={w.image} alt="" className="absolute inset-0 h-full w-full object-cover grayscale" />
+                        <img src={w.image} alt="" className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 group-hover:grayscale-0" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
                       </>
                     )}
                     {!w.image && dark && <Stone variant={i + ai} rotate={-12} className="absolute -right-12 -top-10 w-[38%] opacity-50" />}
                     <div className={`relative ${w.image ? "text-white" : ""}`}>
-                      <p className={`text-sm ${dark || w.image ? "text-white/60" : "text-ink-muted"}`}>{w.date}</p>
+                      {w.date && <p className={`text-sm ${dark || w.image ? "text-white/60" : "text-ink-muted"}`}>{w.date}</p>}
                       <p className="mt-2 max-w-lg text-xl font-medium leading-snug sm:text-2xl">{w.title}</p>
                       <p className={`mt-2 max-w-md text-[15px] ${dark || w.image ? "text-white/70" : "text-ink-muted"}`}>{w.client}</p>
                     </div>
@@ -245,7 +293,9 @@ export default function HomePage() {
           <SectionHead en="our teams" title="조직도" />
           <div className="mt-14 grid gap-10 font-kr lg:grid-cols-[300px_1fr]">
             {/* 대표 소개 */}
-            <div className="outline-card flex flex-col justify-between gap-8 bg-paper-light p-8">
+            <div className="outline-card flex flex-col gap-6 overflow-hidden bg-paper-light p-8">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={organization.ceo.photo} alt={`${organization.ceo.name} 대표이사`} className="aspect-[4/3.6] w-full rounded-2xl object-cover object-top" />
               <div>
                 <p className="text-sm text-ink-muted">CEO</p>
                 <p className="mt-1 text-3xl font-light">{organization.ceo.name} <span className="text-lg text-ink-muted">{organization.ceo.title}</span></p>
