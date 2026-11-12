@@ -8,8 +8,8 @@ export const featured = [
     image: "/works/kai-camp.jpg",
   },
   {
-    title: "부울경 연합 현직자 멘토링 프로그램",
-    partners: "부울경 12개 대학 연합",
+    title: "현직자 멘토링 프로그램",
+    partners: "부울경 연합, 경상국립대, 국립부경대, 경성대 등",
     desc: "매년 50개 직무 현직자가 학생들과 만나는 멘토링 프로그램. 실시간 멘토링 질문 사이트도 직접 구축·운영",
     stats: [{ value: "5년", label: "연속 운영" }, { value: "50개", label: "직무" }, { value: "500여 명", label: "매년 참여" }],
     image: "/works/talk-concert.jpg",
