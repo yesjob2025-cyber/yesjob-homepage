@@ -1,0 +1,13 @@
+{
+  "week": "2026-11-09",
+  "title": "11월 2주차 취업·진로·창업 정보",
+  "sample": true,
+  "items": [
+    { "category": "취업", "title": "[예시] OO공사 2026년 하반기 신입사원 채용", "source": "고용24", "url": "https://www.work24.go.kr", "deadline": "2026-11-20", "summary": "사무·기술 직군 신입 채용. NCS 기반 필기전형." },
+    { "category": "취업", "title": "[예시] 부산 지역 강소기업 채용 모음", "source": "부산일자리정보망", "url": "https://www.busanjob.net", "deadline": "상시", "summary": "부산 소재 강소기업 신입·경력 채용 공고 모음." },
+    { "category": "진로", "title": "[예시] 직업심리검사로 나의 적성 알아보기", "source": "커리어넷", "url": "https://www.career.go.kr", "deadline": "상시", "summary": "무료 직업적성·흥미검사로 진로 방향 점검." },
+    { "category": "진로", "title": "[예시] 현직자 직무 토크콘서트 참가자 모집", "source": "예스잡", "url": "https://www.yesjob.kr", "deadline": "2026-11-25", "summary": "IT·제조·금융 현직자와 함께하는 온라인 토크콘서트." },
+    { "category": "창업", "title": "[예시] 예비창업패키지 추가 모집", "source": "K-Startup", "url": "https://www.k-startup.go.kr", "deadline": "2026-11-28", "summary": "예비창업자 사업화 자금 및 교육·멘토링 지원." },
+    { "category": "정책", "title": "[예시] 청년 일자리 도약 장려금 안내", "source": "온통청년", "url": "https://www.youthcenter.go.kr", "deadline": "상시", "summary": "중소기업 정규직 취업 청년 및 기업 지원 제도." }
+  ]
+}

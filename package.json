@@ -1,0 +1,26 @@
+{
+  "name": "yesjob-homepage",
+  "version": "0.1.0",
+  "private": true,
+  "description": "주식회사 예스잡 공식 홈페이지 (yesjob.kr)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "new-week": "node scripts/new-week.mjs"
+  },
+  "dependencies": {
+    "next": "15.5.20",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  }
+}
