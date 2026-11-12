@@ -1,4 +1,4 @@
-/** 주요 연혁 (최신이 위). month 에 "~" 가 붙은 항목은 해당 연도부터 현재까지 계속 운영 */
+/** 주요 연혁 (최신이 위) — 법인 설립(2025.10) 이후 회사 실적만 기재 */
 export const history: { year: string; items: { month: string; text: string }[] }[] = [
   {
     year: "2026",
@@ -17,25 +17,6 @@ export const history: { year: string; items: { month: string; text: string }[] }
       { month: "12", text: "부산교통공사와 함께하는 부울경 연합 직무체험 멘토링캠프 운영" },
       { month: "11", text: "동아대·국립부경대·국립한국해양대 등 진로취업 행사 운영" },
       { month: "10", text: "주식회사 예스잡 법인 설립 (부산 사상구)" },
-    ],
-  },
-  {
-    year: "2022",
-    items: [{ month: "~", text: "공공기관 합동 채용설명회 운영 (현재까지)" }],
-  },
-  {
-    year: "2019",
-    items: [{ month: "~", text: "부울경 온라인 직무박람회 운영 (현재까지)" }],
-  },
-  {
-    year: "2015",
-    items: [{ month: "~", text: "청년희망재단 열린채용 사업 운영 (현재까지)" }],
-  },
-  {
-    year: "2013",
-    items: [
-      { month: "~", text: "고용노동부 기업탐방 사업 운영 (현재까지)" },
-      { month: "~", text: "채용박람회 운영 (현재까지)" },
     ],
   },
 ];
