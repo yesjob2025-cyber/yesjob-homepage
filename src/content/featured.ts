@@ -26,6 +26,6 @@ export const featured = [
     partners: "대기업 · 공기업 · 공공기관",
     desc: "검증된 기업 섭외력으로 대형 박람회를 기획부터 현장 운영까지",
     stats: [{ value: "5개", label: "대형 박람회" }, { value: "10,000여 명", label: "참여" }],
-    image: "/works/job-fair.jpg",
+    image: "/works/kmou-fair.jpg",
   },
 ];
