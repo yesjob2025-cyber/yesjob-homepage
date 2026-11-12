@@ -3,6 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SideDots } from "@/components/side-dots";
+import { KakaoFloating } from "@/components/kakao-button";
 import { company } from "@/content/company";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SideDots />
         <main>{children}</main>
         <SiteFooter />
+        <KakaoFloating />
       </body>
     </html>
   );

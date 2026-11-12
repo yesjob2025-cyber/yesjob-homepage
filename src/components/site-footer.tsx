@@ -1,4 +1,5 @@
 import { company } from "@/content/company";
+import { KakaoButton } from "@/components/kakao-button";
 
 /** 시안 7p(FAQ) 스타일 — 큰 원형 글자 + 초대형 문장 */
 export function SiteFooter() {
@@ -22,6 +23,7 @@ export function SiteFooter() {
               채용박람회, 멘토링, 취업·창업 교육 등 청년 일자리 사업의 기획·운영을 문의해 주세요.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
+            <KakaoButton />
               <a href={`mailto:${company.email}?subject=${encodeURIComponent("[예스잡 홈페이지] 사업 문의")}`} className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-lemon hover:bg-ink-soft">
                 이메일 문의
               </a>

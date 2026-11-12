@@ -12,6 +12,8 @@ export const company = {
   branch: "서울지사 · 서울특별시 강서구 공항대로 219, 1217호 (마곡동, 센테니아)",
   email: "yes1@yesjob.kr",
   phone: "010-8553-6027",
+  // 카카오톡 채널 채팅 링크 (예: "http://pf.kakao.com/_abcde/chat"). 비워두면 카톡 버튼이 숨겨집니다.
+  kakao: "",
 
   hero: {
     kicker: "Total JOB & EDU · 취업 · 진로 · 창업 · 직무 · 행사 · 글로벌",
