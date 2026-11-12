@@ -1,17 +1,21 @@
 import type { Config } from "tailwindcss";
 
-/** YESJOB 브랜드 토큰 — 크림 배경 / 옐로우 포인트 / 차콜 텍스트 */
+/**
+ * YESJOB 디자인 토큰 — 시안 기준
+ *  라이트 그레이 배경 / 레몬 옐로우 포인트 / 헤비 블랙 / 얇은 Raleway 디스플레이
+ */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        cream: { DEFAULT: "#F7F2E9", 50: "#FDFBF6", 100: "#F7F2E9", 200: "#EFE7D6", 300: "#E4D8BE" },
-        brand: { DEFAULT: "#F6CE51", 50: "#FEF9E7", 100: "#FCEFBF", 200: "#FAE28C", 300: "#F6CE51", 400: "#F2B705", 500: "#D69E00" },
-        ink: { DEFAULT: "#2E2A25", soft: "#4A443C", muted: "#7A7163", line: "#E7DECB" },
+        paper: { DEFAULT: "#EEEEEE", dark: "#E2E2E2", light: "#F6F6F6" },
+        lemon: { DEFAULT: "#FFF48C", soft: "#FFF9C9", deep: "#F5E04A" },
+        ink: { DEFAULT: "#1B1B1B", soft: "#3A3A3A", muted: "#6F6F6F", line: "#D3D3D3" },
       },
       fontFamily: {
-        sans: ["Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Malgun Gothic", "sans-serif"],
+        sans: ["Raleway", "Pretendard", "-apple-system", "Apple SD Gothic Neo", "Malgun Gothic", "sans-serif"],
+        kr: ["Pretendard", "-apple-system", "Apple SD Gothic Neo", "Malgun Gothic", "sans-serif"],
       },
     },
   },

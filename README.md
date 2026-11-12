@@ -9,8 +9,14 @@ npm run dev     # http://localhost:3000
 npm run build
 ```
 
+## 디자인
+시안(옐로우·라이트그레이·블랙, 얇은 Raleway 타이포, 흑백 돌 오브제) 기준.
+- 색상/폰트 토큰: `tailwind.config.ts` (paper · lemon · ink)
+- 돌 오브제는 SVG(`src/components/stone.tsx`) — 실제 사진으로 바꾸려면 `public/`에 이미지 추가
+- 한글 폰트 Pretendard는 `public/fonts/`에 자체 호스팅
+
 ## 홈페이지 구성 (순서)
-1. 회사소개 (히어로 + About)
+1. 히어로 → 목차 → 회사소개
 2. 사업영역별 대표 성과 — 영역마다 4개
 3. 주요 연혁
 4. 조직도

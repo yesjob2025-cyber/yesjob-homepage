@@ -1,46 +1,56 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { SECTIONS } from "@/lib/sections";
+import { useActiveSection } from "@/lib/use-active-section";
 
-const NAV = [
-  { href: "/#about", label: "회사소개" },
-  { href: "/#works", label: "사업실적" },
-  { href: "/#history", label: "연혁" },
-  { href: "/#organization", label: "조직도" },
-  { href: "/#programs", label: "프로그램" },
-  { href: "/#weekly", label: "주간 정보" },
-];
+const IDS = SECTIONS.map((s) => s.id);
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const active = useActiveSection(IDS);
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-line bg-cream-50/90 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-ink text-sm font-black text-brand-300">Y</span>
-          <span className="text-lg font-extrabold tracking-tight">YESJOB</span>
+    <header className="sticky top-0 z-50 border-b border-ink/80 bg-paper/70 backdrop-blur-md">
+      {/* 시안처럼 양 끝이 노랗게 번지는 헤더 */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,244,140,.55),transparent_25%,transparent_75%,rgba(255,244,140,.9))]" />
+      <div className="container-page relative flex h-[72px] items-center justify-between gap-6">
+        <Link href="/" className="shrink-0 text-lg font-normal tracking-tight" onClick={() => setOpen(false)}>
+          YESJOB <span className="hidden font-kr text-sm text-ink-muted sm:inline">주식회사 예스잡</span>
         </Link>
-        <nav className="hidden gap-7 text-sm font-semibold text-ink-soft md:flex">
-          {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-ink">{n.label}</Link>
+        <nav className="hidden items-center gap-1 font-kr text-[15px] lg:flex">
+          {SECTIONS.map((s) => (
+            <Link
+              key={s.id}
+              href={`/#${s.id}`}
+              className={`border-b-2 px-3 py-1.5 transition ${active === s.id ? "border-ink font-semibold" : "border-transparent hover:border-ink-line"}`}
+            >
+              {s.label}
+            </Link>
           ))}
         </nav>
-        <a href="/#contact" className="hidden rounded-full bg-ink px-4 py-2 text-sm font-bold text-cream-50 hover:bg-ink-soft md:inline-block">
-          사업 문의
-        </a>
-        <button className="p-2 md:hidden" aria-label="메뉴 열기" aria-expanded={open} onClick={() => setOpen(!open)}>
-          <span className="block h-0.5 w-6 bg-ink" />
-          <span className="mt-1.5 block h-0.5 w-6 bg-ink" />
-          <span className="mt-1.5 block h-0.5 w-6 bg-ink" />
-        </button>
+        <div className="flex items-center gap-2">
+          <a href="/#contact" className="rounded-full bg-ink px-5 py-2.5 font-kr text-sm font-medium text-lemon hover:bg-ink-soft">
+            사업 문의
+          </a>
+          <button className="p-2 lg:hidden" aria-label="메뉴 열기" aria-expanded={open} onClick={() => setOpen(!open)}>
+            <span className="block h-px w-6 bg-ink" />
+            <span className="mt-2 block h-px w-6 bg-ink" />
+            <span className="mt-2 block h-px w-6 bg-ink" />
+          </button>
+        </div>
       </div>
       {open && (
-        <nav className="border-t border-ink-line bg-cream-50 md:hidden">
-          <div className="container-page flex flex-col py-2">
-            {[...NAV, { href: "/#contact", label: "사업 문의" }].map((n) => (
-              <Link key={n.href} href={n.href} className="py-3 font-semibold" onClick={() => setOpen(false)}>{n.label}</Link>
+        <nav className="relative border-t border-ink-line bg-paper lg:hidden">
+          <ul className="container-page py-2 font-kr">
+            {SECTIONS.map((s, i) => (
+              <li key={s.id} className="border-b border-ink-line last:border-0">
+                <Link href={`/#${s.id}`} className="flex items-baseline gap-4 py-3.5" onClick={() => setOpen(false)}>
+                  <span className="font-sans text-sm text-ink-muted">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-lg">{s.label}</span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </nav>
       )}
     </header>
