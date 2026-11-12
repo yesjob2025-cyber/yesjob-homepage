@@ -12,12 +12,14 @@ export const featured = [
     partners: "부울경 12개 대학 연합",
     desc: "매년 50개 직무 현직자가 참여하고, 실시간 멘토링 질문 사이트를 직접 구축·운영",
     stats: [{ value: "5년", label: "연속 운영" }, { value: "50개", label: "직무" }, { value: "500여 명", label: "매년 참여" }],
+    image: "/works/talk-concert.jpg",
   },
   {
     title: "AI 활용 실무 프로젝트 교육",
     partners: "부울경 10개 전문대학",
     desc: "AI 활용을 넘어 실제 적용 미션을 설계하고 수행하는 프로젝트형 교육",
     stats: [{ value: "100여 명", label: "참여" }, { value: "4.9", label: "만족도" }],
+    image: "/works/ai-contest.jpg",
   },
   {
     title: "기업을 직접 섭외하는 채용박람회",

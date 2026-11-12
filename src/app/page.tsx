@@ -188,7 +188,7 @@ export default function HomePage() {
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={f.image} alt={f.title} className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 group-hover:scale-[1.03] group-hover:grayscale-0" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.78)_0%,rgba(0,0,0,.35)_38%,rgba(0,0,0,.35)_58%,rgba(0,0,0,.88)_100%)]" />
                     </>
                   )}
                   {dark && <Stone variant={i} rotate={-12} className="absolute -right-12 -top-10 w-[38%] opacity-50" />}
