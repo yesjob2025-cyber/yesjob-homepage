@@ -27,8 +27,8 @@ export function SiteFooter() {
               <a href={`mailto:${company.email}?subject=${encodeURIComponent("[예스잡 홈페이지] 사업 문의")}`} className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-lemon hover:bg-ink-soft">
                 이메일 문의
               </a>
-              <a href={`tel:${company.phone.replace(/-/g, "")}`} className="pill border-ink px-6 py-3 text-sm hover:bg-lemon">
-                전화 {company.phone}
+              <a href={`tel:${company.phone.replace(/-/g, "")}`} aria-label="전화로 문의하기" className="pill border-ink px-6 py-3 text-sm hover:bg-lemon">
+                전화 문의
               </a>
             </div>
           </div>
