@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getAllWeeklyIssues } from "@/lib/weekly";
+import { WEEKLY_ENABLED } from "@/lib/sections";
 import { WeeklyList } from "@/components/weekly-list";
 
 export const metadata: Metadata = { title: "주간 취업·진로·창업 정보" };
 
 export default function WeeklyArchivePage() {
+  if (!WEEKLY_ENABLED) notFound();
   const issues = getAllWeeklyIssues();
   return (
     <section className="section">

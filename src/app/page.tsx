@@ -7,7 +7,7 @@ import { organization } from "@/content/organization";
 import { programAreas } from "@/content/programs";
 import projects from "@/content/projects.json";
 import { getLatestWeeklyIssue } from "@/lib/weekly";
-import { SECTIONS } from "@/lib/sections";
+import { SECTIONS, WEEKLY_ENABLED } from "@/lib/sections";
 import { WeeklyList } from "@/components/weekly-list";
 import { Stone } from "@/components/stone";
 import { SoftIcon } from "@/components/soft-icon";
@@ -27,7 +27,7 @@ function SectionHead({ en, title, children }: { en: string; title: string; child
 }
 
 export default function HomePage() {
-  const weekly = getLatestWeeklyIssue();
+  const weekly = WEEKLY_ENABLED ? getLatestWeeklyIssue() : null;
   const { hero } = company;
 
   return (
@@ -380,6 +380,7 @@ export default function HomePage() {
       </section>
 
       {/* ───────── WEEKLY ───────── */}
+      {WEEKLY_ENABLED && (
       <section id="weekly" className="section">
         <div className="container-page">
           <SectionHead en="weekly" title="이번 주 취업·진로·창업 정보">
@@ -398,6 +399,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      )}
     </>
   );
 }

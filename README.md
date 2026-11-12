@@ -39,6 +39,8 @@ npm run build
 > 회사 정보는 사업자등록증·회사소개서, 사업실적은 사업현황 엑셀 기준입니다.
 
 ## 주간 정보 업데이트
+> 현재 **숨김 상태**입니다. 다시 보이게 하려면 `src/lib/sections.ts`의 `WEEKLY_ENABLED`를 `true`로 바꾸세요.
+
 ```bash
 npm run new-week   # 이번 주 월요일 날짜로 빈 템플릿 생성
 ```
