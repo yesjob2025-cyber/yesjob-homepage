@@ -13,7 +13,7 @@ export const company = {
   email: "yes1@yesjob.kr",
   phone: "010-8553-6027",
   // 카카오톡 채널 채팅 링크 (예: "http://pf.kakao.com/_abcde/chat"). 비워두면 카톡 버튼이 숨겨집니다.
-  kakao: "",
+  kakao: "https://pf.kakao.com/_xkxhjNX/chat",
 
   hero: {
     kicker: "Total JOB & EDU · 취업 · 진로 · 창업 · 직무 · 행사 · 글로벌",
