@@ -7,7 +7,7 @@ import { organization } from "@/content/organization";
 import { programAreas } from "@/content/programs";
 import projects from "@/content/projects.json";
 import { getLatestWeeklyIssue } from "@/lib/weekly";
-import { SECTIONS, WEEKLY_ENABLED } from "@/lib/sections";
+import { WEEKLY_ENABLED } from "@/lib/sections";
 import { WeeklyList } from "@/components/weekly-list";
 import { Stone } from "@/components/stone";
 import { SoftIcon } from "@/components/soft-icon";
@@ -65,26 +65,6 @@ export default function HomePage() {
             <span className="font-kr text-[0.62em] font-extralight tracking-[-0.04em]">{hero.tail}</span>
           </h1>
         </div>
-      </section>
-
-      {/* ───────── CONTENTS (시안 2p) ───────── */}
-      <section id="contents" className="pb-10 pt-20">
-        <div className="container-page">
-          <span className="dome-label">contents</span>
-        </div>
-        <ol className="mt-16 border-t border-ink-line">
-          {SECTIONS.slice(1).map((s, i) => (
-            <li key={s.id} className="border-b border-ink-line">
-              <a href={`#${s.id}`} className="container-page group grid grid-cols-[3rem_1fr] items-center py-5 transition hover:bg-lemon/40 md:grid-cols-2">
-                <span className="text-2xl">{nn(i)}</span>
-                <span className="flex flex-wrap items-start gap-x-5 gap-y-1">
-                  <span className="font-kr text-2xl font-light sm:text-4xl">{s.label}</span>
-                  <span className="pt-1 font-kr text-sm text-ink-muted sm:text-base">{s.sub}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ol>
       </section>
 
       {/* ───────── WHO WE ARE (시안 3p) ───────── */}
